@@ -42,3 +42,17 @@ resource "digitalocean_loadbalancer" "public" {
 
   droplet_ids = digitalocean_droplet.servers[*].id
 }
+
+resource "digitalocean_database_cluster" "redmine" {
+  name       = "redmine"
+  engine     = "pg"
+  version    = 12
+  size       = "db-s-1vcpu-1gb"
+  region     = "fra1"
+  node_count = 1
+}
+
+resource "digitalocean_database_db" "redmine" {
+  cluster_id = digitalocean_database_cluster.redmine.id
+  name       = "redmine"
+}
