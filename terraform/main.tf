@@ -14,8 +14,8 @@ resource "digitalocean_droplet" "servers" {
   ]
 }
 
-resource "digitalocean_certificate" "cert" {
-  name    = "domain-cert"
+resource "digitalocean_certificate" "redmine-cert" {
+  name    = "redmine-domain-cert"
   type    = "lets_encrypt"
   domains = ["redmine.victor-zhukovski.club"]
 }
@@ -31,7 +31,7 @@ resource "digitalocean_loadbalancer" "public" {
     target_port     = 80
     target_protocol = "http"
 
-    certificate_name = digitalocean_certificate.cert.name
+    certificate_name = digitalocean_certificate.redmine-cert.name
   }
 
   healthcheck {
@@ -41,6 +41,13 @@ resource "digitalocean_loadbalancer" "public" {
   }
 
   droplet_ids = digitalocean_droplet.servers[*].id
+}
+
+resource "digitalocean_record" "security-task-record" {
+  domain = "victor-zhukovski.club"
+  type   = "A"
+  name   = "redmine"
+  value  = digitalocean_loadbalancer.public.ip
 }
 
 resource "digitalocean_database_cluster" "redmine" {

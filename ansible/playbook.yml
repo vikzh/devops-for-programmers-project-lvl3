@@ -1,0 +1,7 @@
+---
+- name: Setup redmine servers
+  hosts: all
+  roles:
+    - docker-server
+    - redmine-server
+...

@@ -1,0 +1,4 @@
+---
+redmine_port: 80
+redmine_version: "4.2.1"
+...
