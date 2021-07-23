@@ -1,5 +1,5 @@
 variable "do_token" {
-  type = string
+  type        = string
   description = "digital ocean token"
   sensitive   = true
 }
@@ -7,18 +7,18 @@ variable "do_token" {
 
 variable "datadog_api_key" {
   description = "datadog API key"
-  type = string
+  type        = string
   sensitive   = true
 }
 
 variable "datadog_app_key" {
   description = "datadog APP key"
-  type = string
+  type        = string
   sensitive   = true
 }
 
 variable "datadog_api_url" {
   description = "The API URL"
-  type = string
-  default = "https://us3.datadoghq.com/"
+  type        = string
+  default     = "https://us3.datadoghq.com/"
 }
