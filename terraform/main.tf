@@ -63,3 +63,17 @@ resource "digitalocean_database_db" "redmine" {
   cluster_id = digitalocean_database_cluster.redmine.id
   name       = "redmine"
 }
+
+resource "datadog_monitor" "redmine" {
+  name    = "Project3 HTTP Alert {{host.name}}!"
+  type    = "service check"
+  message = "Monitor triggered. Notify: @vik.av@mail.ru"
+
+  query = "\"http.can_connect\".over(\"instance:redmine_application_health_check_status\").by(\"host\",\"instance\",\"url\").last(2).count_by_status()"
+
+  notify_no_data    = true
+  renotify_interval = 60
+
+  notify_audit = false
+  timeout_h    = 60
+}

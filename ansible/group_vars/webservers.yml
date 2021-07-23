@@ -16,4 +16,23 @@ db_password: !vault |
                 63616136666535393836623163313634626266636533353137303938383238393766653465626132
                 6665333737346566330a373135656163353636653337623066376231316363666436653731386434
                 39363363623833646638366462643738303434373633653861313536323161633262
+
+datadog_site: "us3.datadoghq.com"
+datadog_checks:
+  process:
+    init_config:
+    instances:
+      - name: ssh
+        search_string: ['ssh', 'sshd']
+      - name: syslog
+        search_string: ['rsyslog']
+        cpu_check_interval: 0.2
+        exact_match: true
+        ignore_denied_access: true
+  http_check:
+    init_config:
+      - name: Application health check status
+        url: "http://localhost:{{ redmine_port }}"
+        timeout: 5
+        method: GET
 ...
