@@ -1,4 +1,7 @@
 ---
+- name: Update cache
+  apt:
+    update_cache: yes
 - name: Install pip
   include_role:
     name: geerlingguy.pip
@@ -6,9 +9,4 @@
     - pip
     - install
     - docker-server
-
-  tasks:
-    - name: Update cache
-      apt:
-        update_cache: yes
 ...
