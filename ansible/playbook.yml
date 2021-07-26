@@ -4,9 +4,5 @@
   roles:
     - docker-server
     - redmine-server
-
-- name: Setup datadog
-  hosts: all
-  roles:
     - { role: datadog.datadog, become: yes }
 ...

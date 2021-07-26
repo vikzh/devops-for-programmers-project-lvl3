@@ -10,9 +10,6 @@
 - name: Install pip
   include_role:
     name: geerlingguy.pip
-  vars:
-    pip_install_packages:
-      - name: docker
   tags:
     - pip
     - install
