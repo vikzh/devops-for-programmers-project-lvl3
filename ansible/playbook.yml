@@ -5,8 +5,4 @@
     - docker-server
     - redmine-server
     - { role: datadog.datadog, become: yes }
-  tasks:
-    - name: Update cache
-      apt:
-        update_cache: yes
 ...

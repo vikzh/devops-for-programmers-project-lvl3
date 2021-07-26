@@ -6,4 +6,9 @@
     - pip
     - install
     - docker-server
+
+  tasks:
+    - name: Update cache
+      apt:
+        update_cache: yes
 ...
