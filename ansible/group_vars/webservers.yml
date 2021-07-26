@@ -40,7 +40,4 @@ datadog_checks:
         url: "http://localhost:{{ redmine_port }}"
         timeout: 5
         method: GET
-
-pip_install_packages:
-  - name: docker
 ...
