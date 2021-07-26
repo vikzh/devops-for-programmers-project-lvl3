@@ -5,4 +5,4 @@ apply:
 deploy:
 	make -C ansible deploy
 galaxy-install:
-    make -C ansible galaxy-install
+	 make -C ansible galaxy-install
