@@ -1,12 +1,4 @@
 ---
-- name: Update cache
-  apt:
-    update_cache: yes
-  tags:
-    - cache
-    - install
-    - docker-server
-
 - name: Install pip
   include_role:
     name: geerlingguy.pip
